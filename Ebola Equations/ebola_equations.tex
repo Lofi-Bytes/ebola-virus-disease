@@ -1,0 +1,180 @@
+%*************************************************************
+% Preamble.
+%*************************************************************
+%*************************************************************
+% Define the document properties.
+%*************************************************************
+\documentclass[11pt, onecolumn, fleqn]{article}
+%\documentclass[twocolumn]{article}
+\usepackage[hmargin=1in,vmargin=1in]{geometry}
+
+\usepackage{paralist}
+
+%*************************************************************
+% Declare the document language.
+%*************************************************************
+\usepackage[english]{babel}
+
+%*************************************************************
+% ?
+%*************************************************************
+%\usepackage{setspace}
+\usepackage{makecell}
+%\usepackage[font={footnotesize}, justification={justified}]{caption}
+
+%*************************************************************
+% Allow for some flexibility with table captions.
+%*************************************************************
+\usepackage{caption}
+%\usepackage{subcaption}
+
+%*************************************************************
+% Allow the document to display multicolumn.
+%*************************************************************
+\usepackage{multicol}
+
+%*************************************************************
+% Graphics and visuals.
+%*************************************************************
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{dblfloatfix}
+\usepackage{epstopdf}
+\usepackage{tabularx} % For displaying images on an ordered grid.
+\usepackage{subfig}
+
+%*************************************************************
+% Math packages.
+%*************************************************************
+\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{mathrsfs}
+
+%*************************************************************
+% Astronomical symbols.
+%*************************************************************
+\usepackage{mathabx}
+
+%*************************************************************
+% Make vectors look better.
+%*************************************************************
+\let\oldhat\hat
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\hat}[1]{\oldhat{\mathbf{#1}}}
+
+%*************************************************************
+% Make quotations display properly.
+% Usage: \enquote{Stuff in quotes goes here.}
+%*************************************************************
+\usepackage[autostyle]{csquotes}
+
+%*************************************************************
+% Bibliography related.
+%*************************************************************
+\usepackage{natbib}
+\bibpunct{[} {]} {;} {a} {,} {,}
+\usepackage[section]{placeins}
+
+%*************************************************************
+% Change the font size of the section titles.
+%*************************************************************
+\usepackage{titlesec}
+\titleformat*{\section}{\normalsize\scshape}
+\titleformat*{\subsection}{\normalsize\scshape}
+\titleformat*{\subsubsection}{\small\scshape}
+\titleformat*{\paragraph}{\small\scshape}
+\titleformat*{\subparagraph}{\small\scshape}
+
+%*************************************************************
+% For coloring citations/links and creating links.
+%*************************************************************
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=false,
+  citecolor=purple,
+  linkcolor=purple,
+  urlcolor=purple}
+
+%*************************************************************
+% For text highlighting various colors.
+%*************************************************************
+\usepackage{soul}
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\hlc}[2][yellow]{ {\sethlcolor{#1} \hl{#2}} }
+
+%*************************************************************
+% Begin the document.
+%*************************************************************
+\begin{document}
+
+\begin{eqnarray}
+\frac{\mathrm{d} S(t)}{\mathrm{d} t} & = & - \beta (t) \cdot S(t) \cdot \left[ \frac{I(t) + l(t) \cdot J(t)}{N(t)} \right]
+\end{eqnarray}
+
+\begin{eqnarray}
+\frac{\mathrm{d} E(t)}{\mathrm{d} t} & = & \beta (t) \cdot S(t) \cdot \left[ \frac{I(t) + l(t) \cdot J(t)}{N(t)} \right] - \kappa \cdot E(t)
+\end{eqnarray}
+
+\begin{eqnarray}
+\frac{\mathrm{d} I(t)}{\mathrm{d} t} & = & \kappa \cdot E(t) - \left[ \alpha + \gamma \right] \cdot I(t)
+\end{eqnarray}
+
+\begin{eqnarray}
+\frac{\mathrm{d} J(t)}{\mathrm{d} t} & = & \alpha \cdot I(t) - \gamma_{r} \cdot J(t)
+\end{eqnarray}
+
+\begin{eqnarray}
+\frac{\mathrm{d} R(t)}{\mathrm{d} t} & = & \gamma \cdot \left[ 1 - f \right] \cdot I(t) + \gamma_{r} \cdot \left[ 1 - f \right] \cdot J(t)
+\end{eqnarray}
+
+\begin{eqnarray}
+\frac{\mathrm{d} D(t)}{\mathrm{d} t} & = & \gamma \cdot f \cdot I(t) + \gamma_{r} \cdot f \cdot J(t)
+\end{eqnarray}
+
+\begin{eqnarray}
+\frac{\mathrm{d} C(t)}{\mathrm{d} t} & = & \beta (t) \cdot S(t) \cdot \left[ \frac{I(t) + l(t) \cdot J(t)}{N(t)} \right]
+\end{eqnarray}
+
+\vspace{0.5cm}
+
+\begin{tabular}{ l c l }
+$S(t)$ & $=$ & susceptible individuals. \\
+$E(t)$ & $=$ & exposed individuals. \\
+$I(t)$ & $=$ & Infectious and symptomatic individuals. \\
+$J(t)$ & $=$ & hospitalized individuals. \\
+$R(t)$ & $=$ & individuals removed from isolation after recovery. \\
+$D(t)$ & $=$ & individuals removed from isolation after disease-induced death. \\
+$C(t)$ & $=$ & cumulative second cases. \\
+\end{tabular}
+
+\vspace{0.25cm}
+
+\begin{tabular}{ l c p{12cm} }
+$R_{0}$ & $=$ & basic reproduction number. \\
+$\beta (t)$ & $=$ & transmission rate. Determine $\beta$ according to a given value of $R_{0}$ as follows: \\
+\end{tabular}
+\begin{eqnarray}
+\beta & = & \frac{R_{0} \cdot \left[ \alpha + \gamma \right] \cdot \gamma_{r}}{\alpha \cdot l + \gamma_r}
+\end{eqnarray}
+
+\vspace{0.25cm}
+
+\begin{tabular}{ l c p{12cm} }
+$l(t)$ & $=$ & effectiveness of isolation strategy ( $l = 1$ denotes no isolation, $l = 0$ denotes perfect isolation). \\
+$N(t)$ & $=$ & population size. \\
+$\kappa$ & $=$ & latency period. \\
+$\alpha$ & $=$ & average time from onset of symptoms to hospitalization. \\
+$\gamma$ & $=$ & average infectious period. \\
+$\gamma_{r}$ & $=$ & average time individuals stay in the hospital. \\
+$f$ & $=$ & case fatality ratio. \\
+\end{tabular}
+
+%*************************************************************
+% End the document environment.  
+% No other lines will be read after this point.
+%*************************************************************
+\end{document}
+
+

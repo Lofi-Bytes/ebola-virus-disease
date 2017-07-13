@@ -1,0 +1,7 @@
+    f0[:,:] = -grid[:,9]  *    Si * (( Ii            +    grid[:,8]    * Ji )      / N  )                  
+    f1[:,:] =  grid[:,9]  *    Si * (( Ii            +    grid[:,8]    * Ji )      / N  )   - grid[:,6]   * Ei    
+    f2[:,:] =  grid[:,6]  *    Ei - (  grid[:,7]     +    gamma      ) * Ii               
+    f3[:,:] =  grid[:,7]  *    Ii -    gamma_r       *    Ji                              
+    f4[:,:] =  gamma      *  ( 1  -    grid[:,2])    *    Ii           + gamma_r   *    ( 1 - grid[:,2] ) * Ji 
+    f5[:,:] =  gamma      *            grid[:,2]     *    Ii           + gamma_r   *          grid[:,2]   * Ji            
+    f6[:,:] =  grid[:,9]  *    Si                    * (( Ii           + grid[:,8] * Ji )                 / N  )
